@@ -39,7 +39,7 @@ def main():
     parser.add_argument(
         "max_score",
         metavar="MAX",
-        type=int,
+        type=float,
         help="max amount of points the test suite is worth",
     )
 
