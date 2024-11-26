@@ -12,6 +12,9 @@ inputs:
   setup-command:
     description: "Command to execute prior to the test, typically for environment setup or dependency installation."
     required: false
+  working-directory:
+    description: "Working directory to start the test."
+    required: false
 outputs:
   result:
     description: "Runner output"
@@ -23,3 +26,4 @@ runs:
     - "--timeout=${{ inputs.timeout }}"
     - "--max-score=${{ inputs.max-score }}"
     - "--setup-command=${{ inputs.setup-command }}"
+    - "--working-directory=${{ inputs.working-directory }}"

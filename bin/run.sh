@@ -3,7 +3,9 @@
 root="/opt/test-runner"
 export PYTHONPATH="$root:$PYTHONPATH"
 
-mkdir autograding_output
+mkdir -p autograding_output
+
+WORKING_DIR=
 
 while [ $# -gt 0 ]; do
   case "$1" in
@@ -16,6 +18,9 @@ while [ $# -gt 0 ]; do
       ;;
     --setup-command=*)
       SETUP_COMMAND="${1#*=}"
+      ;;
+    --working-directory=*)
+      WORKING_DIR="${1#*=}"
       ;;
     *)
       printf "***************************\n"
@@ -34,7 +39,7 @@ if [ -n "$SETUP_COMMAND" ]; then
   eval "$SETUP_COMMAND"
 fi
 
-timeout "$TIMEOUT" python3 /opt/test-runner/bin/run.py ./ ./autograding_output/ "$MAX_SCORE"
+timeout "$TIMEOUT" python3 /opt/test-runner/bin/run.py ./$WORKING_DIR ./autograding_output/ "$MAX_SCORE"
 exit_status=$?
 if [ $exit_status -eq 124 ]; then
   echo "The command took longer than $TIMEOUT seconds to execute. Please increase the timeout to avoid this error."
