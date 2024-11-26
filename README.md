@@ -16,7 +16,8 @@
 |-----------------|-----------------------------------------------------------------------------------------------------------------|----------|
 | `timeout`       | Duration (in minutes) before the test is terminated. Defaults to 10 minutes with a maximum limit of 6 hours.    | Yes      |
 | `max-score`     | Points to be awarded if the test passes.                                                                        | No       |
-| `setup-command`         | Command to execute prior to the test, typically for environment setup or dependency installation.                                                                | No       |
+| `setup-command`         | Command to execute prior to the test, typically for environment setup or dependency installation.       | No       |
+| `working-directory`     | Relative location where pytest should start looking for tests.                                          | No       |
 
 ### Outputs
 
@@ -47,6 +48,7 @@ jobs:
         timeout: '15'
         max-score: '100'
         setup-command: 'pip install -r requirements.txt'
+        working-directory: 'some_subdir'
     - name: Autograding Reporter
       uses: ...
 ```
