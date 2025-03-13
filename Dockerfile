@@ -1,11 +1,11 @@
-FROM python:3.13.2-slim
+FROM python:3.13.2
 
 COPY requirements.txt /requirements.txt
 
 RUN pip install -r /requirements.txt
 
 RUN apt-get update \
- && apt-get install make g++ jq -y \
+ && apt-get install jq -y \
  && apt-get autoremove -y \
  && apt-get install coreutils -y \
  && rm -rf /var/lib/apt/lists/*
