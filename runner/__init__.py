@@ -140,7 +140,7 @@ class ResultsReporter:
             if test.is_passing():
                 test.score = self.results.max_score / len(self.tests)
             else:
-                test.score = 0 
+                test.score = 0
             self.results.add(test)
 
     def pytest_terminal_summary(self, terminalreporter):
@@ -198,7 +198,7 @@ def _sanitize_args(args: List[str]) -> List[str]:
     return clean
 
 
-def run(indir: Directory, outdir: Directory, max_score: int, args: List[str]) -> None:
+def run(indir: Directory, outdir: Directory, max_score: float, args: List[str]) -> None:
     """
     Run the tests for the given exercise and produce a results.json.
     """
