@@ -31,6 +31,7 @@ done
 TIMEOUT=$((TIMEOUT * 60))
 echo "TIMEOUT is $TIMEOUT seconds"
 echo "MAX_SCORE is $MAX_SCORE"
+echo "WORKING DIRECTORY is $WORKING_DIR"
 
 if [ -n "$SETUP_COMMAND" ]; then
   echo "Running setup command: $SETUP_COMMAND"
